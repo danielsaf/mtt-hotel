@@ -14,7 +14,8 @@ public class test {
                         statusCode(200).
                         body(
                                 "date", equalTo("2013-04-20"),
-                                "rooms_available", equalTo(10)).
+                                "rooms_available", equalTo(10),
+                                "price", equalTo(100)).
                         when().
                         get("http://localhost:9090/checkAvailability/2013-04-20");
         }
