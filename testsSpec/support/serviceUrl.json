@@ -1,0 +1,3 @@
+{
+  "getCheckAvailability": "http://localhost:9090/checkAvailability"
+}
