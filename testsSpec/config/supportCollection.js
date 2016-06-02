@@ -1,16 +1,12 @@
 var supportCollection = (function() {
 
-    var activityPicker = require('../tests/element/ST/activityPicker'),
-        profileInfo = require('../tests/element/ST/profileInfo'),
-        gradebookSummary = require('../tests/element/LS/gradebookSummary'),
-        reminderWidget = require('../tests/element/reminderWidget');
-
+    var url = require('../support/serviceUrl.json'),
+        hellpers = require('../support/hellpers.js');
+    
     return {
-        activityPicker: activityPicker,
-        profileInfo: profileInfo,
-        gradebookSummary: gradebookSummary,
-        reminderWidget: reminderWidget
+        url: url,
+        hellpers: hellpers
     };
 
 }());
-module.exports = elementCollection;
+module.exports = supportCollection;

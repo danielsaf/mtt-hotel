@@ -1,0 +1,11 @@
+{
+  "name": "my-awesome-package",
+  "version": "1.0.0",
+  "devDependencies": {
+    "frisby": "latest",
+    "jasmine-node": "latest"
+  },
+  "dependencies": {
+    "moment": "^2.13.0"
+  }
+}
