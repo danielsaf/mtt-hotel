@@ -232,6 +232,23 @@ frisby.create('CheckAvailability with some symbol (-) on date: ' + '-' + hellper
     })
     .toss();
 
+frisby.create('CheckAvailability with no date')
+    .get(json.getCheckAvailability)
+    .expectStatus(400)
+    .after(function (err,res,body) {
+        var token = body;
+        expect(token).toMatch("Invalid or missing date ''. Valid date format is: yyyy-mm-dd, e.g. 2013-04-20.");
+        frisby.globalSetup({
+
+            request: {
+                headers: { 'User-Token': token }
+            }
+        })
+
+    })
+    .toss();
+
+
 frisby.create('CheckAvailability with some symbol (=) on date: ' + '=' + hellpers.currentDate)
     .get(json.getCheckAvailability + '=' + hellpers.currentDate)
     .expectStatus(400)
