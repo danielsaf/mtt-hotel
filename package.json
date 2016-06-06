@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "devDependencies": {
     "frisby": "latest",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-copy": "^1.0.0",
     "jasmine-node": "latest"
   },
   "dependencies": {
