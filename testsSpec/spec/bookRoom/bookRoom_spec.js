@@ -9,10 +9,10 @@ var frisby = require('frisby'),
 
 // ******************************************************************************* Positive test ********************************************
 
-frisby.create('CheckAvailability for ' + hellpers.currentDate)
+frisby.create('Book room for ' + hellpers.currentDate)
     .post(url.bookRoom,
         {
-            "numOfDays":2, 
+            "numOfDays":5, 
             "checkInDate": hellpers.currentDate
         }, 
         { 
@@ -21,11 +21,40 @@ frisby.create('CheckAvailability for ' + hellpers.currentDate)
     .expectStatus(200)
     .expectHeaderContains('content-type', 'application/json')
     .inspectJSON()
-    .expectJSON({checkInDate: '2016-06-02', checkOutDate: '2016-06-04', totalPrice: 250})
-    // .expectJSONTypes({
-    //         date: String,
-    //         rooms_available: Number,
-    //         price: Number
-    //     }
-    // )
+    .expectJSON({
+        checkInDate: hellpers.currentDate, 
+        checkOutDate: hellpers.addDate(5, 'days'), 
+        totalPrice: hellpers.totalPrice(hellpers.addDate(5, 'days'))
+    })
+    .expectJSONTypes({
+        checkInDate: String,
+        checkOutDate: String,
+        totalPrice: Number
+        }
+    )
     .toss();
+
+// frisby.create('Book room for ' + hellpers.addDate(3, 'days'))
+//     .post(url.bookRoom,
+//         {
+//             "numOfDays":2,
+//             "checkInDate": hellpers.addDate(3, 'days')
+//         },
+//         {
+//             json: true
+//         })
+//     .expectStatus(200)
+//     .expectHeaderContains('content-type', 'application/json')
+//     .inspectJSON()
+//     .expectJSON({
+//         checkInDate: hellpers.addDate(3, 'days'),
+//         // checkOutDate: hellpers.addDate(2, 'days'),
+//         totalPrice: hellpers.totalPrice(hellpers.addDate(2, 'days'))
+//     })
+//     .expectJSONTypes({
+//             checkInDate: String,
+//             checkOutDate: String,
+//             totalPrice: Number
+//         }
+//     )
+//     .toss();
